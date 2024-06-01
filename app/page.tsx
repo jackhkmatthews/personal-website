@@ -52,7 +52,7 @@ export default function Home() {
         >
           SOON_
         </a>{" "}
-        and helped create some fun projects outside of work like{" "}
+        and helped create some fun projects outside of work, like{" "}
         <a
           target="_blank"
           href="https://doyoutrackid.com"
