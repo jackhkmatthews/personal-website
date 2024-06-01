@@ -4,7 +4,7 @@ import { text } from "stream/consumers";
 
 export default function Home() {
   return (
-    <main className="px-[max(1rem,10vw)] py-[max(1rem,10vh)] flex flex-col gap-4 break-words max-w-full [word-break:break-word]">
+    <main className="p-4 pt-8 md:px-[max(1rem,10vw)] md:py-[max(1rem,20vh)] flex flex-col gap-4 break-words max-w-full [word-break:break-word]">
       <h1 className={twJoin(textClasses.large, "text-sky-800")}>
         Hi, I&apos;m Jack
       </h1>
