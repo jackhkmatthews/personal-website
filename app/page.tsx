@@ -4,11 +4,20 @@ import { text } from "stream/consumers";
 
 export default function Home() {
   return (
-    <main className="p-4 pt-8 md:px-[max(1rem,10vw)] md:py-[max(1rem,20vh)] flex flex-col gap-4 break-words max-w-full [word-break:break-word]">
-      <h1 className={twJoin(textClasses.large, "text-sky-800")}>
+    <main
+      className={twJoin(
+        textClasses.medium,
+        "p-4 pt-8 md:px-[max(1rem,10vw)] md:py-[max(1rem,20vh)] flex flex-col gap-4 break-words [word-break:break-word] @container max-w-[40ch] box-content"
+      )}
+    >
+      <h1
+        className={twJoin(
+          "font-sans leading-tight text-sky-800 text-[max(1.875rem,20cqw)]"
+        )}
+      >
         Hi, I&apos;m Jack
       </h1>
-      <p className={twJoin(textClasses.medium, "text-sky-700 max-w-[40ch]")}>
+      <p className={twJoin(textClasses.medium, "text-sky-700")}>
         I work as a Web Developer at{" "}
         <a
           target="_blank"
@@ -27,7 +36,7 @@ export default function Home() {
         </a>
         .
       </p>
-      <p className={twJoin(textClasses.medium, "text-sky-700 max-w-[40ch]")}>
+      <p className={twJoin(textClasses.medium, "text-sky-700")}>
         I&apos;ve also worked at{" "}
         <a
           target="_blank"
@@ -62,7 +71,7 @@ export default function Home() {
         </a>
         .
       </p>
-      <p className={twJoin(textClasses.medium, "text-sky-700 max-w-[40ch]")}>
+      <p className={twJoin(textClasses.medium, "text-sky-700")}>
         If you want to get in touch, email me at{" "}
         <a
           href="mailto:jack@jackhkmatthews.com"
