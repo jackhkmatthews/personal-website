@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Jack Matthews - Web Developer",
-  description: "Jack Matthews is a web developer based in the UK.",
+  description: "My personal website for a public presence.",
 };
 
 export default function RootLayout({
