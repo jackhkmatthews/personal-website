@@ -12,7 +12,7 @@ export default function Home() {
     >
       <h1
         className={twJoin(
-          "font-sans leading-tight text-transparent bg-clip-text text-[max(1.875rem,20cqw)] bg-gradient-to-r from-sky-300 to-sky-900 translate-x-[-0.1ch]"
+          "font-sans leading-tight text-sky-700 text-[max(1.875rem,20cqw)] translate-x-[-0.1ch]"
         )}
       >
         Hi, I&apos;m Jack
