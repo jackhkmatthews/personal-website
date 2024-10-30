@@ -1,6 +1,5 @@
 import { twJoin } from "tailwind-merge";
 import { textClasses } from "./textClasses";
-import { text } from "stream/consumers";
 
 export default function Home() {
   return (
@@ -74,10 +73,10 @@ export default function Home() {
       <p className={twJoin(textClasses.medium, "text-sky-700")}>
         If you want to get in touch, email me at{" "}
         <a
-          href="mailto:jack@jackhkmatthews.com"
+          href="mailto:jackhkmatthews@gmail.com"
           className={twJoin(textClasses.link)}
         >
-          jack@jackhkmatthews.com
+          jackhkmatthews@gmail.com
         </a>
         .
       </p>
