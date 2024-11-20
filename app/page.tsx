@@ -1,5 +1,6 @@
 import { twJoin } from "tailwind-merge";
 import { textClasses } from "./textClasses";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -14,7 +15,17 @@ export default function Home() {
           "font-sans leading-tight text-sky-700 text-[max(1.875rem,19cqw)] translate-x-[-0.1ch]"
         )}
       >
-        Hi, I&apos;m Jack
+        Hi, I&apos;m{" "}
+        <span className="relative">
+          Jack
+          <Image
+            width={124}
+            height={124}
+            src="/jack.png"
+            alt="Proud Jack"
+            className="h-[0.6em] w-[0.4em] object-cover absolute bottom-0 right-0 translate-x-full translate-y-1/4"
+          />
+        </span>
       </h1>
       <p className={twJoin(textClasses.medium, "text-sky-700")}>
         I work as a Web Developer at{" "}
