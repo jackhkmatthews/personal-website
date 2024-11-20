@@ -20,23 +20,31 @@ export default function Home() {
         I work as a Web Developer at{" "}
         <a
           target="_blank"
-          href="https://bakkenbaeck.com/"
+          href="https://metalabel.com/"
           className={twJoin(textClasses.link)}
         >
-          Bakken & Bæck
+          Metalabel
         </a>{" "}
         where I&apos;m currently working on{" "}
         <a
           target="_blank"
-          href="https://tonscan.com"
+          href="https://metalabel.com"
           className={twJoin(textClasses.link)}
         >
-          tonscan.com
+          metalabel.com
         </a>
         .
       </p>
       <p className={twJoin(textClasses.medium, "text-sky-700")}>
         I&apos;ve also worked at{" "}
+        <a
+          target="_blank"
+          href="https://bakkenbaeck.com/"
+          className={twJoin(textClasses.link)}
+        >
+          Bakken & Bæck
+        </a>
+        ,{" "}
         <a
           target="_blank"
           href="https://openasset.com/"
