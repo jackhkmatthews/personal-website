@@ -1,0 +1,44 @@
+name: Main commit deployments
+
+env:
+  VERCEL_ORG_ID: ${{secrets.JACKHKMATTHEWS_VERCEL_TEAM_ID}}
+  VERCEL_PROJECT_ID: ${{secrets.JACKHKMATTHEWS_PERSONAL_WEBSITE_VERCEL_PROJECT_ID}}
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  main-commit-deployments:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.16.0"
+          cache: "pnpm"
+
+      - name: Install Vercel CLI
+        run: pnpm install --global vercel@latest
+
+      - name: Build preview and alias uat with Vercel
+        run: |
+          url=$(vercel deploy \
+            --scope=${{secrets.JACKHKMATTHEWS_PERSONAL_WEBSITE_VERCEL_PROJECT_ID}} \
+            --token=${{secrets.JACKHKMATTHEWS_VERCEL_ACCESS_TOKEN}}); \
+          vercel alias "$url" uat.jackhkmatthews.com \
+            --scope=${{secrets.JACKHKMATTHEWS_PERSONAL_WEBSITE_VERCEL_PROJECT_ID}} \
+            --token=${{secrets.JACKHKMATTHEWS_VERCEL_ACCESS_TOKEN}}
+
+      - name: Build prod and alias staging with Vercel
+        run: |
+          url=$(vercel deploy --prod \
+            --scope=${{secrets.JACKHKMATTHEWS_PERSONAL_WEBSITE_VERCEL_PROJECT_ID}} \
+            --token=${{secrets.JACKHKMATTHEWS_VERCEL_ACCESS_TOKEN}}); \
+          vercel alias "$url" staging.jackhkmatthews.com \
+            --scope=${{secrets.JACKHKMATTHEWS_PERSONAL_WEBSITE_VERCEL_PROJECT_ID}} \
+            --token=${{secrets.JACKHKMATTHEWS_VERCEL_ACCESS_TOKEN}}
