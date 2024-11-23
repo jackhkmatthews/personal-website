@@ -28,7 +28,7 @@ jobs:
       - name: Build preview and alias uat with Vercel
         run: |
           url=$(vercel deploy \
-            --scope=${{secrets.JACKHKMATTHEWS_PERSONAL_WEBSITE_VERCEL_PROJECT_ID}} \
+            --scope=${{secrets.JACKHKMATTHEWS_VERCEL_TEAM_ID}} \
             --token=${{secrets.JACKHKMATTHEWS_VERCEL_ACCESS_TOKEN}}); \
           vercel alias "$url" uat.jackhkmatthews.com \
             --scope=${{secrets.JACKHKMATTHEWS_PERSONAL_WEBSITE_VERCEL_PROJECT_ID}} \
@@ -37,7 +37,7 @@ jobs:
       - name: Build prod and alias staging with Vercel
         run: |
           url=$(vercel deploy --prod \
-            --scope=${{secrets.JACKHKMATTHEWS_PERSONAL_WEBSITE_VERCEL_PROJECT_ID}} \
+            --scope=${{secrets.JACKHKMATTHEWS_VERCEL_TEAM_ID}} \
             --token=${{secrets.JACKHKMATTHEWS_VERCEL_ACCESS_TOKEN}}); \
           vercel alias "$url" staging.jackhkmatthews.com \
             --scope=${{secrets.JACKHKMATTHEWS_PERSONAL_WEBSITE_VERCEL_PROJECT_ID}} \
