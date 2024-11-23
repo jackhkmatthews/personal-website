@@ -36,7 +36,7 @@ export default function Home() {
         >
           Metalabel
         </a>{" "}
-        where I&apos;m currently working on{" "}
+        where we&apos;re building{" "}
         <a
           target="_blank"
           href="https://metalabel.com"
