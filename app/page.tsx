@@ -15,7 +15,7 @@ export default function Home() {
           "font-sans leading-tight text-sky-700 text-[max(1.875rem,19cqw)] translate-x-[-0.1ch]"
         )}
       >
-        Hi, I&apos;m new
+        Hi, I&apos;m{" "}
         <span className="relative">
           Jack
           <span className="absolute bottom-0 right-0 translate-x-3/4 translate-y-1/4 rotate-12">
