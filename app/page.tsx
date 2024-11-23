@@ -18,13 +18,15 @@ export default function Home() {
         Hi, I&apos;m{" "}
         <span className="relative">
           Jack
-          <Image
-            width={124}
-            height={124}
-            src="/jack.png"
-            alt="Proud Jack"
-            className="h-[0.6em] w-[0.4em] object-cover absolute bottom-0 right-0 translate-x-full translate-y-1/4"
-          />
+          <span className="absolute bottom-0 right-0 translate-x-3/4 translate-y-1/4 rotate-12">
+            <Image
+              width={124}
+              height={124}
+              src="/jack.png"
+              alt="Proud Jack"
+              className="h-[0.6em] w-[0.6em] animate-bounce"
+            />
+          </span>
         </span>
       </h1>
       <p className={twJoin(textClasses.medium, "text-sky-700")}>
