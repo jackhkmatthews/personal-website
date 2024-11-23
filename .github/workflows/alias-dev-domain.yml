@@ -1,17 +1,23 @@
-name: Tag production deployment
+name: Alias dev domain
 
 env:
   VERCEL_ORG_ID: ${{secrets.JACKHKMATTHEWS_VERCEL_TEAM_ID}}
   VERCEL_PROJECT_ID: ${{secrets.JACKHKMATTHEWS_PERSONAL_WEBSITE_VERCEL_PROJECT_ID}}
 
 on:
-  push:
-    # Pattern matched against refs/tags
-    tags:
-      - 'v[0-9]+\.[0-9]+\.[0-9]+' # Push events to every tag with 3 version numbers, e.g. v1.0.13
+  workflow_dispatch:
+    inputs:
+      domain:
+        description: Choose a domain to alias
+        required: false
+        default: dev1
+        type: choice
+        options:
+          - dev1
+          - dev2
 
 jobs:
-  Deploy-Production:
+  alias-dev-domain:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,8 +34,11 @@ jobs:
       - name: Install Vercel CLI
         run: pnpm install --global vercel@latest
 
-      - name: Promote staging on Vercel to production
+      - name: Build preview and alias with Vercel
         run: |
-          vercel promote https://staging.jackhkmatthews.com \
+          url=$(vercel deploy \
+            --scope=${{secrets.JACKHKMATTHEWS_VERCEL_TEAM_ID}} \
+            --token=${{secrets.JACKHKMATTHEWS_VERCEL_ACCESS_TOKEN}}); \
+          vercel alias "$url" ${{github.event.inputs.domain}}.jackhkmatthews.com \
             --scope=${{secrets.JACKHKMATTHEWS_VERCEL_TEAM_ID}} \
             --token=${{secrets.JACKHKMATTHEWS_VERCEL_ACCESS_TOKEN}}
