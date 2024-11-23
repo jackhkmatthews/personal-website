@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint:check": "next lint",
+    "type:check": "tsc --noEmit"
   },
   "dependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
