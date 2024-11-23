@@ -23,22 +23,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
-
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20.16.0"
-          cache: "pnpm"
-
-      - name: Install Vercel CLI
-        run: pnpm install --global vercel@latest
-
-      - name: Build preview and alias with Vercel
+      - name: Set domain to branch
         run: |
-          url=$(vercel deploy \
-            --scope=${{secrets.JACKHKMATTHEWS_VERCEL_TEAM_ID}} \
-            --token=${{secrets.JACKHKMATTHEWS_VERCEL_ACCESS_TOKEN}}); \
-          vercel alias "$url" ${{github.event.inputs.domain}}.jackhkmatthews.com \
-            --scope=${{secrets.JACKHKMATTHEWS_VERCEL_TEAM_ID}} \
-            --token=${{secrets.JACKHKMATTHEWS_VERCEL_ACCESS_TOKEN}}
+          DOMAIN="${{ github.event.inputs.domain }}.jackhkmatthews.com"
+          URL="https://api.vercel.com/v9/projects/${{secrets.JACKHKMATTHEWS_PERSONAL_WEBSITE_VERCEL_PROJECT_ID}}/domains/${DOMAIN}?slug=jackhkmatthews-projects&teamId=${{secrets.JACKHKMATTHEWS_VERCEL_TEAM_ID}}"
+          echo "Setting domain ${DOMAIN} to branch ${{ github.ref_name }}"
+          curl -X PATCH "$URL" \
+            -H "Authorization: Bearer ${{secrets.JACKHKMATTHEWS_VERCEL_ACCESS_TOKEN}}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "gitBranch": "${{ github.ref_name }}"
+            }'
