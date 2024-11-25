@@ -1,0 +1,21 @@
+name: Main commit sync
+
+env:
+  VERCEL_ORG_ID: ${{secrets.JACKHKMATTHEWS_VERCEL_TEAM_ID}}
+  VERCEL_PROJECT_ID: ${{secrets.JACKHKMATTHEWS_PERSONAL_WEBSITE_VERCEL_PROJECT_ID}}
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  main-commit-deployments:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Force push to staging
+        run: |
+          git push --force origin main:staging-read-only
+      - name: Force push to uat
+        run: |
+          git push --force origin main:uat-read-only
