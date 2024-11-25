@@ -1,0 +1,17 @@
+name: Main commit sync
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  main-commit-deployments:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Force push to staging
+        run: |
+          git push --force origin main:staging-read-only
+      - name: Force push to uat
+        run: |
+          git push --force origin main:uat-read-only

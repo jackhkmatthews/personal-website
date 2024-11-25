@@ -1,0 +1,31 @@
+name: Lint, type and format checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint-type-format-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.16.0"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: |
+          pnpm i --frozen-lockfile
+
+      - name: Lint check
+        run: pnpm lint:check
+
+      - name: Type check
+        run: pnpm type:check

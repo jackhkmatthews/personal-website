@@ -28,11 +28,8 @@ jobs:
       - name: Install Vercel CLI
         run: pnpm install --global vercel@latest
 
-      - name: Build prod and alias prod with Vercel
+      - name: Promote staging on Vercel to production
         run: |
-          url=$(vercel deploy --prod \
-            --scope=${{secrets.JACKHKMATTHEWS_VERCEL_TEAM_ID}} \
-            --token=${{secrets.JACKHKMATTHEWS_VERCEL_ACCESS_TOKEN}}); \
-          vercel alias "$url" jackhkmatthews.com \
+          vercel promote https://staging.jackhkmatthews.com \
             --scope=${{secrets.JACKHKMATTHEWS_VERCEL_TEAM_ID}} \
             --token=${{secrets.JACKHKMATTHEWS_VERCEL_ACCESS_TOKEN}}
