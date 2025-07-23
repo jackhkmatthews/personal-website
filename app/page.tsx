@@ -10,7 +10,6 @@ export default function Home() {
         "p-4 pt-8 md:px-[max(1rem,10vw)] md:py-[max(1rem,20vh)] flex flex-col gap-4 break-words [word-break:break-word] @container max-w-[40ch] box-content"
       )}
     >
-      <h1>FE_URL = {process.env.FE_URL}</h1>
       <h1
         className={twJoin(
           "font-sans leading-tight text-sky-700 text-[max(1.875rem,19cqw)] translate-x-[-0.1ch]"
@@ -31,7 +30,7 @@ export default function Home() {
         </span>
       </h1>
       <p className={twJoin(textClasses.medium, "text-sky-700")}>
-        I work as a Web Developer at{" "}
+        I&apos;m a London based Web Developer who most recently worked at{" "}
         <a
           target="_blank"
           href="https://metalabel.com/"
@@ -39,7 +38,7 @@ export default function Home() {
         >
           Metalabel
         </a>{" "}
-        where we&apos;re building{" "}
+        building{" "}
         <a
           target="_blank"
           href="https://metalabel.com"
