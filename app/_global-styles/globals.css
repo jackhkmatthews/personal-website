@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-bounce-updown {
+    animation: bounce-updown 1s infinite ease-in-out;
+  }
+}
+
+@theme {
+  --animate-bounce-updown: bounce-update 1s infinite;
+
+  @keyframes bounce-updown {
+    0% {
+      transform: translateY(0);
+    }
+    20% {
+      transform: translateY(-25%);
+    }
+    60%,
+    100% {
+      transform: translateY(0);
+    }
+  }
+}

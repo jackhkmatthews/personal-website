@@ -1,31 +1,30 @@
 import { twJoin } from "tailwind-merge";
-import { textClasses } from "./textClasses";
-import Image from "next/image";
+import { textClasses } from "@/app/_shared/textClasses";
+import { Redis } from "@upstash/redis";
+import { REDIS_BOUNCE_COUNT_KEY } from "./_lib/constants";
+import { Bouncer } from "./bouncer";
 
-export default function Home() {
+const redis = Redis.fromEnv();
+
+export default async function Home() {
+  const bounces = await redis.get<number>(REDIS_BOUNCE_COUNT_KEY);
   return (
     <main
       className={twJoin(
         textClasses.medium,
-        "p-4 pt-8 md:px-[max(1rem,10vw)] md:py-[max(1rem,20vh)] flex flex-col gap-4 break-words [word-break:break-word] @container max-w-[40ch] box-content",
+        "p-4 pt-8 md:px-[max(1rem,10vw)] md:py-[max(1rem,20vh)] flex flex-col gap-4 break-words [word-break:break-word] @container max-w-[40ch] box-content"
       )}
     >
       <h1
         className={twJoin(
-          "font-sans leading-tight text-sky-700 text-[max(1.875rem,19cqw)] translate-x-[-0.1ch]",
+          "font-sans leading-tight text-sky-700 text-[max(1.875rem,19cqw)] translate-x-[-0.1ch]"
         )}
       >
         Hi, I&apos;m{" "}
         <span className="relative">
           Jack
           <span className="absolute bottom-0 right-0 translate-x-3/4 translate-y-1/4 rotate-12">
-            <Image
-              width={124}
-              height={124}
-              src="/jack.png"
-              alt="Proud Jack"
-              className="h-[0.6em] w-[0.6em] animate-bounce"
-            />
+            <Bouncer bounces={bounces} />
           </span>
         </span>
       </h1>
